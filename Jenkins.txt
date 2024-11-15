@@ -1,0 +1,19 @@
+pipeline {
+      agent any 
+      stages {
+           stage('Checkout Code') {
+              steps {
+                  git 'https://github.com/MythriMuthyala/selenium-tests.git'
+             }
+         }
+stage('Install Dependancies') {
+    steps{
+       bat 'pip install -r requirements.txt'
+      }
+  }
+  stage('Run Selenium Tests') {
+      steps {
+           bat 'python test_selenium.py'
+       }    
+   } 
+ }
